@@ -1,0 +1,3 @@
+C:/Users/lenin/CLionProjects/AM-PartDR/cmake-build-debug/CMakeFiles/AM_PartDR.dir
+C:/Users/lenin/CLionProjects/AM-PartDR/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/lenin/CLionProjects/AM-PartDR/cmake-build-debug/CMakeFiles/rebuild_cache.dir
