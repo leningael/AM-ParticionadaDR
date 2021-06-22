@@ -53,11 +53,11 @@ int main() {
             case 1:
                 printf("Introduce el tamanio del proceso:\n");
                 scanf("%d", &tamanioP);
-                printf("\nLLega %s con tamanio %d\n\n", nombreP, tamanioP);
+                printf("LLega %s con tamanio %d\n", nombreP, tamanioP);
                 asignacionRAM(nombreP, tamanioP, TAL, &numAL, TP, &nPart, modalidad);
                 break;
             case 2:
-                printf("\nTermina %s\n\n", nombreP);
+                printf("Termina %s\n", nombreP);
                 recuperaRAM(nombreP, TAL, &numAL, TP, nPart);
                 break;
             default:
@@ -208,9 +208,14 @@ void crearAL(int *numAL, int tamAL, int locAL, libre** TAL){
 
 void imprimirTAL(libre** TAL, int numAL){
     printf("Tabla de Areas Libres\n");
-    for(int i = 1; i <= numAL; i++){
-        if(!strcmp(TAL[i]->estado,"DISPONIBLE"))
-            printf("Numero: %d\nTamanio: %d\nLocalidad: %d\nEstado: %s\n\n", TAL[i]->num, TAL[i]->tam, TAL[i]->loc, TAL[i]->estado);
+    printf("Numero:%6sTamanio:%6sLocalidad:%6sEstado:%6s\n"," "," "," "," ");
+    for(int i = 1;i <= numAL; i++){
+        if(!strcmp(TAL[i]->estado,"VACIO")&&TAL[i]->tam > 0)
+        printf("%3d%8s%7d%11s%4d%11s%-10s\n",TAL[i]->num," " ,TAL[i]->tam," ",TAL[i]->loc," ",TAL[i]->estado);
+    }
+    for(int i = 1;i <= numAL; i++){
+        if(!strcmp(TAL[i]->estado,"DISPONIBLE")&&TAL[i]->tam > 0)
+        printf("%3d%8s%7d%11s%4d%8s%-10s\n",TAL[i]->num," " ,TAL[i]->tam," ",TAL[i]->loc," ",TAL[i]->estado);
     }
 }
 
@@ -227,9 +232,14 @@ void crearPart(int *nPart, int tamP, int locP, char *proceso, part** TP){
 
 void imprimirTP(part** TP, int nPart){
     printf("Tabla de Particiones\n");
-    for(int i = 1; i <= nPart; i++){
+    printf("Numero:%6sTamanio:%6sLocalidad:%6sEstado:%6sProceso:\n", " ", " ", " ", " ");
+    for(int i = 1;i <= nPart; i++){
+        if(!strcmp(TP[i]->estado,"VACIA"))
+            printf("%3d%8s%7d%11s%4d%11s%-10s%2s%-5s\n",TP[i]->num," " ,TP[i]->tam," ",TP[i]->loc," ",TP[i]->estado," ",TP[i]->proceso);
+    }
+    for(int i = 1;i <= nPart; i++){
         if(!strcmp(TP[i]->estado,"ASIGNADA"))
-            printf("Numero: %d\nTamanio: %d\nLocalidad: %d\nEstado: %s\nProceso: %s\n\n", TP[i]->num, TP[i]->tam, TP[i]->loc, TP[i]->estado, TP[i]->proceso);
+        printf("%3d%8s%7d%11s%4d%10s%-10s%3s%-5s\n",TP[i]->num," " ,TP[i]->tam," ",TP[i]->loc," ",TP[i]->estado," ",TP[i]->proceso);
     }
 }
 
